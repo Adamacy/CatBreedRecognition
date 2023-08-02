@@ -13,6 +13,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get('/')
+def index():
+    return {"message": "This endpoint is useless"}
+
 @app.post('/image')
 async def get_image(image: UploadFile = File()):
     return {"res": check_image(image.file)}
